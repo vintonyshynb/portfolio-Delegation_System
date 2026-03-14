@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>System Delegacji</title>
+</head>
+
+<body class="bg-light">
+<div class="container mt-4">
+
+    <h3>Lista delegacji</h3>
+
+    <a class="btn btn-success mb-3" href="/add">Dodaj</a>
+    <a class="btn btn-primary mb-3" href="/report">Raport</a>
+
+    <table class="table table-striped table-hover">
+        <tr>
+            <th>ID</th>
+            <th>Data</th>
+            <th>KM</th>
+            <th>Waluta</th>
+            <th>Paliwo PLN</th>
+            <th>Nocleg PLN</th>
+            <th>Dieta PLN</th>
+            <th>Paliwo</th>
+            <th>Nocleg</th>
+            <th>Dieta</th>
+            <th>Akcje</th>
+        </tr>
+
+        {% for i in trips %}
+        <tr>
+            <td>{{i[0]}}</td>
+            <td>{{i[1]}}</td>
+            <td>{{i[2]}}</td>
+            <td>{{i[3]}}</td>
+            <td>{{i[4]}}</td>
+            <td>{{i[5]}}</td>
+            <td>{{i[6]}}</td>
+            <td>{{i[7]}} {{i[3]}}</td>
+            <td>{{i[8]}} {{i[3]}}</td>
+            <td>{{i[9]}} {{i[3]}}</td>
+            <td>
+                <a class="btn btn-sm btn-primary" href="/edit/{{i[0]}}">Edytuj</a>
+                <a class="btn btn-sm btn-danger" href="/delete/{{i[0]}}">Usuń</a>
+            </td>
+        </tr>
+        {% endfor %}
+
+    </table>
+</div>
+</body>
+</html>

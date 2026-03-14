@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Delegacja</title>
+</head>
+
+<body class="bg-light">
+<div class="container mt-4">
+
+    <h3>{% if trip %}Edytuj{% else %}Dodaj{% endif %} delegację</h3>
+
+    <form method="post">
+        <label>Data</label>
+        <input class="form-control" type="date" name="date" required value="{{trip.date if trip}}">
+
+        <label>KM</label>
+        <input class="form-control" type="number" name="distance" required value="{{trip.distance if trip}}">
+
+        <label>Waluta</label>
+        <select class="form-control" name="currency">
+            <option value="PLN" {% if trip and trip.currency=='PLN' %}selected{% endif %}>PLN</option>
+            <option value="EUR" {% if trip and trip.currency=='EUR' %}selected{% endif %}>EUR</option>
+            <option value="USD" {% if trip and trip.currency=='USD' %}selected{% endif %}>USD</option>
+        </select>
+
+        <label>Koszt paliwa</label>
+        <input class="form-control" type="number" step="0.01" name="fuel_cost" required
+               value="{{trip.fuel_cost if trip}}">
+
+        <label>Koszt noclegu</label>
+        <input class="form-control" type="number" step="0.01" name="accommodation_cost"
+               value="{{trip.accommodation_cost if trip}}">
+
+        <label>Koszt diety</label>
+        <input class="form-control" type="number" step="0.01" name="diet_cost" value="{{trip.diet_cost if trip}}">
+
+        <br>
+        <button class="btn btn-success">Zapisz</button>
+    </form>
+</div>
+</body>
+</html>
